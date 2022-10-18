@@ -12,7 +12,8 @@ int main()
     int num;
     cout << "Enter number you want to check -";
     cin >> num;
-    for (int i = 0, m = 0; i <= n - 1; i++)
+    int i;
+    for (i = 0; i <= n - 1; i++)
     {
         if (a[i] == num)
         {

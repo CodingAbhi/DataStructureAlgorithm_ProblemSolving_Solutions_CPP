@@ -5,14 +5,14 @@ int main()
     int a[1000];
     int n;
     cin >> n;
-    int i = 0;
-    for (; i < n; i++)
+    int i;
+    for (i = 0; i < n; i++)
     {
         cin >> a[i];
     }
     int largest = INT_MIN;
     int smallest = INT_MAX;
-    for (; i < n; i++)
+    for (i = 0; i < n; i++)
     {
         if (a[i] > largest)
         {
