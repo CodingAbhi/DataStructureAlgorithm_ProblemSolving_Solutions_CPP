@@ -8,4 +8,6 @@ int main()
     int sum = 1;
     int div = 2;
     while (i <= n)
+    {
+    }
 }
