@@ -1,30 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
-void unq(int n, int a[])
+void PS(int n, int x, int a[])
 {
+    int Pair = 0;
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = i + 1; j < n; j++)
         {
-            if (i != j && a[i] == a[j])
+            if (a[i] + a[j] == x)
             {
-                break;
-            }
-            if (j == n - 1)
-            {
-                cout << a[i];
+                Pair++;
             }
         }
     }
+    cout << Pair << endl;
 }
+
 int main()
 {
     int n;
     cin >> n;
+    int x;
+    cin >> x;
     int a[1000] = {0};
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-    unq(n, a);
+    PS(n, x, a);
 }

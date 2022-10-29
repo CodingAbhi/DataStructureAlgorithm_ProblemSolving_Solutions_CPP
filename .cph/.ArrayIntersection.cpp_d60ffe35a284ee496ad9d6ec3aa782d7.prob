@@ -1,0 +1,1 @@
+{"name":"Local: ArrayIntersection","url":"c:\\Users\\abhis\\OneDrive\\Desktop\\Code\\ArrayIntersection.cpp","tests":[{"id":1667044168763,"input":"4\n2 6 1 2\n\n5\n1 2 3 4 2","output":"2 1 2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\abhis\\OneDrive\\Desktop\\Code\\ArrayIntersection.cpp","group":"local","local":true}

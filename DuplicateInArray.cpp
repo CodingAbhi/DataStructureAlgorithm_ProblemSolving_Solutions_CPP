@@ -1,18 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
-void unq(int n, int a[])
+void Duplicate(int n, int a[])
 {
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+
+        for (int j = i; j < n; j++)
         {
             if (i != j && a[i] == a[j])
             {
-                break;
-            }
-            if (j == n - 1)
-            {
                 cout << a[i];
+                break;
             }
         }
     }
@@ -26,5 +24,5 @@ int main()
     {
         cin >> a[i];
     }
-    unq(n, a);
+    Duplicate(n, a);
 }
