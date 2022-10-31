@@ -14,13 +14,9 @@ int SecondLargest(int n, int a[])
 
     for (int i = 0; i < n; i++)
     {
-        while (max2 < max)
+        if ((a[i] > max2) && a[i] < max)
         {
-            if (a[i] > max2)
-            {
-                max2 = a[i];
-                break;
-            }
+            max2 = a[i];
         }
     }
     cout << max2;

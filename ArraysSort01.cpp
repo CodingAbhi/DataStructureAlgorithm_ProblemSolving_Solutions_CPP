@@ -12,7 +12,10 @@ void sort(int n, int a[])
             }
         }
     }
-    cout << a;
+    for (int k = 0; k < n; k++)
+    {
+        cout << a[k] << " ";
+    }
 }
 int main()
 {
