@@ -9,19 +9,19 @@ int main()
     {
         cin >> a[l];
     }
-    int sum = INT_MIN;
+    int currentsum = 0;
+    int max = INT_MIN;
     for (int i = 0; i < n; i++)
     {
-        for (int j = i; j < n; j++)
+        currentsum = currentsum + a[i];
+        if (currentsum > max)
         {
-            for (int k = i; k <= j; k++)
-            {
-                if (sum < a[j])
-                {
-                    sum = a[j];
-                }
-            }
+            max = currentsum;
+        }
+        if (currentsum < 0)
+        {
+            currentsum = 0;
         }
     }
-    cout << sum << endl;
+    cout << max;
 }
