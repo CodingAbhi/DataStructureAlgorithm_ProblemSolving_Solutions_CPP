@@ -26,4 +26,5 @@ int main()
     {
         cout << b[j] << ", ";
     }
+    return 0;
 }
