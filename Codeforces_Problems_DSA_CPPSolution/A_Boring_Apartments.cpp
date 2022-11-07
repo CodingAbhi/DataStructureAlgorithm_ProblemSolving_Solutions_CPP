@@ -251,34 +251,29 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    int n, c0, c1, h;
-    cin >> n >> c0 >> c1 >> h;
     string s;
     cin >> s;
-    int zero = 0, ones = 0;
-    for (int i = 0; i < n; i++)
+    int j = 0;
+    if (s.size() == 1)
     {
-        if (s[i] == '0')
-        {
-            zero++;
-        }
-        else
-        {
-            ones++;
-        }
+        j = 1;
     }
-    long ans = (c0 * zero) + (c1 * ones);
-    for (long i = 1; i <= ones; i++)
+    else if (s.size() == 2)
     {
-        long other = (i * h) + (((zero) + i) * c0) + ((ones - i) * c1);
-        ans = min(ans, other);
+        j = 3;
     }
-    for (long i = 1; i <= zero; i++)
+    else if (s.size() == 3)
     {
-        long other = (i * h) + ((ones + i) * c1) + ((zero - i) * c0);
-        ans = min(ans, other);
+        j = 6;
     }
-    cout << ans << endl;
+    else
+    {
+        j = 10;
+    }
+
+    int buffer = ((s[0] - '0') - 1) * 10;
+
+    cout << buffer + j << endl;
 }
 int main()
 {

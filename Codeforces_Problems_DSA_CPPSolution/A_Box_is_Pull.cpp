@@ -251,34 +251,20 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    int n, c0, c1, h;
-    cin >> n >> c0 >> c1 >> h;
-    string s;
-    cin >> s;
-    int zero = 0, ones = 0;
-    for (int i = 0; i < n; i++)
+    int x1, y1, x2, y2;
+    cin >> x1 >> y1 >> x2 >> y2;
+    int Maxx = max(x1, x2);
+    int Minx = min(x1, x2);
+    int maxy = max(y1, y2);
+    int miny = min(y1, y2);
+    if (x1 == x2 || y1 == y2)
     {
-        if (s[i] == '0')
-        {
-            zero++;
-        }
-        else
-        {
-            ones++;
-        }
+        cout << (Maxx - Minx) + (maxy - miny) << endl;
     }
-    long ans = (c0 * zero) + (c1 * ones);
-    for (long i = 1; i <= ones; i++)
+    else
     {
-        long other = (i * h) + (((zero) + i) * c0) + ((ones - i) * c1);
-        ans = min(ans, other);
+        cout << (Maxx - Minx) + (maxy - miny) + 2 << endl;
     }
-    for (long i = 1; i <= zero; i++)
-    {
-        long other = (i * h) + ((ones + i) * c1) + ((zero - i) * c0);
-        ans = min(ans, other);
-    }
-    cout << ans << endl;
 }
 int main()
 {
@@ -290,5 +276,6 @@ int main()
     {
         solve();
     }
+
     return 0;
 }
