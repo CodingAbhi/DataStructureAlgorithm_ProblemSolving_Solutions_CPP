@@ -253,23 +253,36 @@ void solve()
     // SOLUTION STARTS
     int n;
     cin >> n;
-    for (int i = 0; i <= n / 3; i++)
+    int a[n + 1] = {0};
+    int sum = 0;
+    int b[n] = {0};
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j <= n / 5; j++)
+        cin >> a[i];
+    }
+    a[n] = {0};
+    for (int i = 0; i < n - 1; i++)
+    {
+        b[i] = a[i + 1];
+    }
+    b[n - 1] = a[0];
+
+    for (int i = 0; i < n; i++)
+    {
+        sum = sum + a[i];
+    }
+    if (sum == 0)
+    {
+        cout << "NO" << endl;
+    }
+    if (sum != 0)
+    {
+        cout << "YES" << endl;
+        for (int j = 0; j < n; j++)
         {
-            for (int k = 0; k <= n / 7; k++)
-            {
-                if (((i * 3) + (j * 5) + (k * 7)) == n)
-                {
-                    cout << i << " " << j << " " << k << endl;
-                }
-                else
-                {
-                    cout << "-1" << endl;
-                }
-            }
+            cout << b[j] << " ";
         }
-        break;
+        cout << endl;
     }
 }
 int main()
