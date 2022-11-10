@@ -253,21 +253,32 @@ void solve()
     // SOLUTION STARTS
     int n;
     cin >> n;
-    if (n < 3 || n == 4)
+    string s;
+    cin >> s;
+    map<char, int> m;
+    if (s[n - 1] == 'Q')
     {
-        cout << "-1" << endl;
+        cout << "No" << endl;
+        return;
     }
-    else if (n % 3 == 0)
+
+    for (int i = 0; i < n; i++)
     {
-        cout << n / 3 << " 0 0" << endl;
+        m[s[i]] = m[s[i]] + 1;
+        if (m[s['Q']] > m[s['A']])
+        {
+            cout << "XNO" << endl;
+            return;
+        }
     }
-    else if (n % 3 == 1)
+
+    if (m['Q'] > m['A'])
     {
-        cout << n / 3 - 2 << " 0 1" << endl;
+        cout << "No" << endl;
     }
-    else
+    else if (m['A'] >= m['Q'])
     {
-        cout << n / 3 - 1 << " 1 0" << endl;
+        cout << "Yes" << endl;
     }
 }
 int main()

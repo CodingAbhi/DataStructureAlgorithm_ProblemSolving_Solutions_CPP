@@ -251,38 +251,60 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    int n;
+    ll n;
     cin >> n;
-    int a[n + 1] = {0};
-    int sum = 0;
-    int b[n] = {0};
+    ll sum = 0;
+    vector<ll> a(n);
+
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-    a[n] = {0};
-    for (int i = 0; i < n - 1; i++)
+    sort(a.begin(), a.end());
+    for (int m = 0; m < n; m++)
     {
-        b[i] = a[i + 1];
+        sum = sum + a[m];
+        if (sum == 0)
+        {
+            swap(a[m], a[n - 1]);
+        }
     }
-    b[n - 1] = a[0];
-
+    bool ok = 1;
+    sum = 0;
     for (int i = 0; i < n; i++)
     {
-        sum = sum + a[i];
+        sum += a[i];
+        if (sum == 0)
+        {
+            ok = 0;
+        }
     }
-    if (sum == 0)
+    if (ok == 1)
     {
-        cout << "NO" << endl;
+        cout << "YES" << endl;
+        for (int i = 0; i < n; i++)
+        {
+            cout << a[i] << " ";
+        }
+        return;
+    }
+    sort(a.begin(), a.end(), greater<>());
+    sum = 0;
+    for (int i = 0; i < n; i++)
+    {
+        sum += a[i];
     }
     if (sum != 0)
     {
         cout << "YES" << endl;
-        for (int j = 0; j < n; j++)
+        for (int i = 0; i < n; i++)
         {
-            cout << b[j] << " ";
+            cout << a[i] << " ";
         }
-        cout << endl;
+    }
+    else
+    {
+        cout << "NO";
     }
 }
 int main()
@@ -294,7 +316,8 @@ int main()
     while (t--)
     {
         solve();
+        cout << endl;
     }
-
+    // code;
     return 0;
 }
