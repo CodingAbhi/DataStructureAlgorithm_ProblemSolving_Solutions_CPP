@@ -251,35 +251,10 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
-    int countQ = 0;
-    int coutA = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (s[i] == 'Q')
-        {
-            countQ++;
-        }
-        else
-        {
-            countQ--;
-        }
-        if (countQ <= 0)
-        {
-            countQ = 0;
-        }
-    }
-    if (countQ == 0)
-    {
-        cout << "Yes" << endl;
-    }
-    else
-    {
-        cout << "No" << endl;
-    }
+    ll a, b, c;
+    cin >> a >> b >> c;
+    ll d = (a + b + c) - 1;
+    cout << d << endl;
 }
 int main()
 {

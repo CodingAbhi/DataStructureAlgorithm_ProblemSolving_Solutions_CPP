@@ -253,33 +253,24 @@ void solve()
     // SOLUTION STARTS
     int n;
     cin >> n;
-    string s;
-    cin >> s;
-    int countQ = 0;
-    int coutA = 0;
+    int a[n] = {0};
     for (int i = 0; i < n; i++)
     {
-        if (s[i] == 'Q')
+        cin >> a[i];
+    }
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (a[i] > a[i + 1])
         {
-            countQ++;
+            continue;
         }
         else
         {
-            countQ--;
-        }
-        if (countQ <= 0)
-        {
-            countQ = 0;
+            cout << "YES" << endl;
+            return;
         }
     }
-    if (countQ == 0)
-    {
-        cout << "Yes" << endl;
-    }
-    else
-    {
-        cout << "No" << endl;
-    }
+    cout << "NO" << endl;
 }
 int main()
 {
