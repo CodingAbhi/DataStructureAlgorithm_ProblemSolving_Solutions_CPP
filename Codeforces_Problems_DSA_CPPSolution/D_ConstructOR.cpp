@@ -251,13 +251,29 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
+    ll a, b, d;
+    cin >> a >> b >> d;
+    ll c = max(a, b);
+    for (ll x = 2; x < c; x++)
+    {
+        if ((a / x) % d == 0 && (b / x) % d == 0)
+        {
+            cout << x << endl;
+            return;
+        }
+    }
+    cout << "-1";
 }
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    // int t;cin >> t;while (t--)
-    solve();
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        solve();
+    }
 
     return 0;
 }
