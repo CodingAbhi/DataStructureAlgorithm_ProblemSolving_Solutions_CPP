@@ -251,18 +251,69 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    ll a, b, d;
-    cin >> a >> b >> d;
-    ll c = max(a, b);
-    for (ll x = 2; x < c; x++)
+    string s1, s2;
+    cin >> s1 >> s2;
+    if (s1[(s1.size()) - 1] == 'S' && s2[(s2.size()) - 1] == 'S')
     {
-        if ((a / x) % d == 0 && (b / x) % d == 0)
+        if (s1.size() > s2.size())
         {
-            cout << x << endl;
-            return;
+            cout << "<";
         }
+        else
+        {
+            cout << ">";
+        }
+        return;
     }
-    cout << "-1";
+    if (s1[(s1.size()) - 1] == 'L' && s2[(s2.size()) - 1] == 'L')
+    {
+        if (s1.size() > s2.size())
+        {
+            cout << ">";
+        }
+        else
+        {
+            cout << "<";
+        }
+        return;
+    }
+    if (s1[(s1.size()) - 1] == 'M' && s2[(s2.size()) - 1] == 'M')
+    {
+        if (s1.size() > s2.size())
+        {
+            cout << ">";
+        }
+        else
+        {
+            cout << "<";
+        }
+        return;
+    }
+    if (s1[(s1.size()) - 1 == 'L'] && s2[(s2.size()) - 1] == 'L')
+    {
+        cout << "=";
+        return;
+    }
+    if (s1[(s1.size()) - 1 == 'M'] && s2[(s2.size()) - 1] == 'M')
+    {
+        cout << "=";
+        return;
+    }
+    if (s1[(s1.size()) - 1 == 'S'] && s2[(s2.size()) - 1] == 'S')
+    {
+        cout << "=";
+        return;
+    }
+    if (s1[(s1.size()) - 1] == 'L')
+    {
+        cout << ">";
+    }
+    if (s1[(s1.size()) - 1] == 'S')
+    {
+        cout << "<";
+    }
+
+    cout << s1.size() << " " << s2.size();
 }
 int main()
 {
@@ -273,6 +324,7 @@ int main()
     while (t--)
     {
         solve();
+        cout << endl;
     }
 
     return 0;
