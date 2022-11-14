@@ -259,9 +259,13 @@ void solve()
         {
             cout << "<";
         }
-        else
+        else if (s1.size() < s2.size())
         {
             cout << ">";
+        }
+        else if (s1.size() == s2.size())
+        {
+            cout << "=";
         }
         return;
     }
@@ -271,9 +275,13 @@ void solve()
         {
             cout << ">";
         }
-        else
+        else if (s1.size() < s2.size())
         {
             cout << "<";
+        }
+        else if (s1.size() == s2.size())
+        {
+            cout << "=";
         }
         return;
     }
@@ -283,37 +291,40 @@ void solve()
         {
             cout << ">";
         }
-        else
+        else if (s1.size() < s2.size())
         {
             cout << "<";
         }
+        else if (s1.size() == s2.size())
+        {
+            cout << "=";
+        }
         return;
     }
-    if (s1[(s1.size()) - 1 == 'L'] && s2[(s2.size()) - 1] == 'L')
-    {
-        cout << "=";
-        return;
-    }
-    if (s1[(s1.size()) - 1 == 'M'] && s2[(s2.size()) - 1] == 'M')
-    {
-        cout << "=";
-        return;
-    }
-    if (s1[(s1.size()) - 1 == 'S'] && s2[(s2.size()) - 1] == 'S')
-    {
-        cout << "=";
-        return;
-    }
+
     if (s1[(s1.size()) - 1] == 'L')
     {
         cout << ">";
+        return;
     }
     if (s1[(s1.size()) - 1] == 'S')
     {
         cout << "<";
+        return;
     }
-
-    cout << s1.size() << " " << s2.size();
+    if (s1[(s1.size()) - 1] == 'M')
+    {
+        if (s2[(s2.size()) - 1] == 'S')
+        {
+            cout << ">";
+            return;
+        }
+        else if (s2[(s2.size()) - 1] == 'L')
+        {
+            cout << "<";
+            return;
+        }
+    }
 }
 int main()
 {
