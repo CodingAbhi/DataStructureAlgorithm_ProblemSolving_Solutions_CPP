@@ -279,7 +279,7 @@ void solve()
             e++;
         }
     }
-    if (a == 1 && b == 1 && c == 1 && d == 1 && e == 1)
+    if (a == 1 && b == 1 && c == 1 && d == 1 && e == 1 && n == 5)
     {
         cout << "YES";
     }
@@ -288,6 +288,23 @@ void solve()
         cout << "NO";
     }
 }
+
+void anothersolve()
+{
+    sci(n);
+    scs(s);
+    sort(s.begin(), s.end());
+    // Timur
+    string temp = "Timur";
+
+    sort(temp.begin(), temp.end());
+
+    if (temp == s)
+        cout << "YES";
+    else
+        cout << "NO";
+}
+
 int main()
 {
     ios::sync_with_stdio(false);
@@ -296,7 +313,7 @@ int main()
     cin >> t;
     while (t--)
     {
-        solve();
+        anothersolve();
         cout << endl;
     }
 

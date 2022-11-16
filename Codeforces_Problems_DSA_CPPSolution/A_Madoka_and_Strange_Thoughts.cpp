@@ -248,28 +248,23 @@ ll CountDigitsofNumber(ll n)
     return count;
 }
 
-ll lcm(ll a, ll b)
-{
-
-    // maximum value between n1 and n2 is stored in max
-    ll max = (a > b) ? a : b;
-
-    do
-    {
-        if (max % a == 0 && max % b == 0)
-        {
-            cout << max;
-            break;
-        }
-        else
-            ++max;
-    } while (true);
-}
 void solve()
 {
-    // SOLUTION STARTS
-
-    cout << lcm(2, 3);
+    int n;
+    cin >> n;
+    int b = 0;
+    int pair = 0;
+    for (int b = 1; b <= n; b++)
+    {
+        for (int a = 1; a <= b; a++)
+        {
+            if (((a * b) / gcd(a, b) * gcd(a, b)) <= 3)
+            {
+                pair++;
+            }
+        }
+    }
+    cout << pair << endl;
 }
 int main()
 {
@@ -278,10 +273,7 @@ int main()
     int t;
     cin >> t;
     while (t--)
-    {
         solve();
-        cout << endl;
-    }
 
     return 0;
 }
