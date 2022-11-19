@@ -251,32 +251,52 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    string s;
-    cin >> s;
-    int a = 0;
-    int n = s.size();
+    int n;
+    cin >> n;
+    vector<ll> v(n);
     for (int i = 0; i < n; i++)
     {
-        if (s[i] == 'Y' && s[i + 1] == 'e' && s[i + 2] == 's')
-        {
-            a++;
-        }
-        else if (s[i] == 'e' && s[i + 1] == 's' && s[i + 2] == 'Y')
-        {
-            a++;
-        }
-        else if (s[i] == 's' && s[i + 1] == 'Y' && s[i + 2] == 'e')
+        cin >> v[i];
+    }
+    /*int a = 0;
+    for (int j = 0; j < n - 1; j++)
+    {
+        if (v[j] == v[j + 1])
         {
             a++;
         }
     }
-    if ((a == 1) || (a == 2) || (a == 3) || (a == n))
+    if (a > 0)
     {
-        cout << "YES" << endl;
+        cout << "NO" << endl;
+        return;
     }
     else
     {
+        cout << "YES" << endl;
+    }*/
+
+    map<ll, ll> m;
+    for (int i = 0; i < n; i++)
+    {
+        m[v[i]] = m[v[i]] + 1;
+    }
+    map<ll, ll>::iterator it;
+    ll val = 0;
+    for (it = m.begin(); it != m.end(); it++)
+    {
+        if ((it->second) > 1)
+        {
+            val++;
+        }
+    }
+    if (val >= 1)
+    {
         cout << "NO" << endl;
+    }
+    else
+    {
+        cout << "YES" << endl;
     }
 }
 int main()
