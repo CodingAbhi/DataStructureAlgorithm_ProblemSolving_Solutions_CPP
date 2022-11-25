@@ -12,12 +12,16 @@ int main()
             cin >> a[n][m];
         }
     }
-    for (int n = 0; n < i; n++)
+    int top = 0;
+    int bottom = j - 1;
+    int left = 0;
+    int right = i - 1;
+    while ((top <= bottom) && (left <= right))
     {
-        for (int m = 0; m < j; m++)
+        for (int i = left; i <= right; i++)
         {
-            cout << a[n][m];
+            cout << a[i][top] << " ";
         }
-        cout << endl;
+        top++;
     }
 }
