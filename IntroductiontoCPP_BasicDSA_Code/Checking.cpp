@@ -9,7 +9,8 @@ int main()
     cout << float(4 / 5) << endl;
     cout << 4 % 3 << endl;
     cout << m << endl;
-    cout << "Ascii value of a = " << a;
+    cout << "Ascii value of a = " << a << endl;
+    cout << 4 - 7 << endl;
 
     return 0;
 }

@@ -251,44 +251,23 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    string s;
-    cin >> s;
-    int a = 0;
-    int n = s.size();
-    if (n == 1)
+    int n, m;
+    cin >> n >> m;
+    int a[m][2];
+    for (int i = 0; i < m; i++)
     {
-        if (s[0] == 'Y' || s[0] == 'e' || s[0] == 's')
-        {
-            cout << "YES" << endl;
-        }
-        else
-        {
-            cout << "NO" << endl;
-        }
-        return;
+        cin >> a[i][0] >> a[i][1];
     }
-    for (int i = 0; i < n - 1; i++)
+    if (n == m)
     {
-        if (s[i] == 'Y' && s[i + 1] == 'e')
-        {
-            continue;
-        }
-        else if (s[i] == 'e' && s[i + 1] == 's')
-        {
-            continue;
-        }
-        else if (s[i] == 's' && s[i + 1] == 'Y')
-        {
-            continue;
-        }
-        else
-        {
-            cout << "NO" << endl;
-            return;
-        }
+        cout << "NO" << endl;
     }
-    cout << "YES" << endl;
+    else
+    {
+        cout << "YES" << endl;
+    }
 }
+
 int main()
 {
     ios::sync_with_stdio(false);
@@ -296,9 +275,7 @@ int main()
     int t;
     cin >> t;
     while (t--)
-    {
         solve();
-    }
 
     return 0;
 }

@@ -250,44 +250,59 @@ ll CountDigitsofNumber(ll n)
 
 void solve()
 {
-    // SOLUTION STARTS
-    string s;
-    cin >> s;
-    int a = 0;
-    int n = s.size();
-    if (n == 1)
+    ll n;
+    cin >> n;
+    ll a[n];
+    for (int i = 0; i < n; i++)
     {
-        if (s[0] == 'Y' || s[0] == 'e' || s[0] == 's')
+        cin >> a[i];
+    }
+    int max1 = 0;
+    int max2 = 0;
+    int p = 0;
+    for (int o = 0; o < n - 1; o++)
+    {
+        if (a[o] == a[o + 1])
         {
-            cout << "YES" << endl;
+            p++;
         }
-        else
+    }
+    if (p = n - 1)
+    {
+        for (int e = 0; e < n; e++)
         {
-            cout << "NO" << endl;
+            cout << '0';
         }
         return;
     }
-    for (int i = 0; i < n - 1; i++)
+
+    for (int i = 0; i < n; i++)
     {
-        if (s[i] == 'Y' && s[i + 1] == 'e')
+
+        if (a[i] > max1)
         {
-            continue;
-        }
-        else if (s[i] == 'e' && s[i + 1] == 's')
-        {
-            continue;
-        }
-        else if (s[i] == 's' && s[i + 1] == 'Y')
-        {
-            continue;
-        }
-        else
-        {
-            cout << "NO" << endl;
-            return;
+
+            max1 = a[i];
         }
     }
-    cout << "YES" << endl;
+    for (int j = 0; j < n; j++)
+    {
+        if (a[j] < max1 && a[j] > max2)
+        {
+            max2 = a[j];
+        }
+    }
+
+    for (int k = 0; k < n; k++)
+    {
+        if (a[k] == max1)
+        {
+            cout << max1 - max2 << " ";
+            continue;
+        }
+        cout << a[k] - max1 << " ";
+    }
+    cout << endl;
 }
 int main()
 {
@@ -296,9 +311,7 @@ int main()
     int t;
     cin >> t;
     while (t--)
-    {
         solve();
-    }
 
     return 0;
 }

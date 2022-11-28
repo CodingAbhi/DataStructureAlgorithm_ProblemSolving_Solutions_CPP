@@ -253,41 +253,22 @@ void solve()
     // SOLUTION STARTS
     string s;
     cin >> s;
-    int a = 0;
-    int n = s.size();
+    ll n = s.size();
+    string s1(s, 0, n - 1);
     if (n == 1)
     {
-        if (s[0] == 'Y' || s[0] == 'e' || s[0] == 's')
-        {
-            cout << "YES" << endl;
-        }
-        else
-        {
-            cout << "NO" << endl;
-        }
+        cout << s[0] << s[0] << endl;
         return;
     }
-    for (int i = 0; i < n - 1; i++)
+    for (int i = 0; i < n; i++)
     {
-        if (s[i] == 'Y' && s[i + 1] == 'e')
-        {
-            continue;
-        }
-        else if (s[i] == 'e' && s[i + 1] == 's')
-        {
-            continue;
-        }
-        else if (s[i] == 's' && s[i + 1] == 'Y')
-        {
-            continue;
-        }
-        else
-        {
-            cout << "NO" << endl;
-            return;
-        }
+        cout << s[i];
     }
-    cout << "YES" << endl;
+    for (int j = n - 1; j >= 0; j--)
+    {
+        cout << s[j];
+    }
+    cout << endl;
 }
 int main()
 {
