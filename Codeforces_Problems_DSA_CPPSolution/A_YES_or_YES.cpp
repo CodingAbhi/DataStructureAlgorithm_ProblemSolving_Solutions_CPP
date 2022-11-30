@@ -251,80 +251,16 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    int n;
-    cin >> n;
-    vector<int> a(n), b(n);
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
-    for (int i = 0; i < n; i++)
-        cin >> b[i];
-
-    int ans = 0;
-    for (int i = 0; i < n; i++)
+    string s;
+    cin >> s;
+    if ((s[0] == 'Y' || s[0] == 'y') && (s[1] == 'E' || s[1] == 'e') && (s[2] == 'S' || s[2] == 's'))
     {
-        if (a[i] != b[i])
-            ans++;
-    }
-
-    sort(a.begin(), a.end());
-    sort(b.begin(), b.end());
-    int total = 1;
-    for (int i = 0; i < n; i++)
-    {
-        if (a[i] != b[i])
-            total++;
-    }
-    cout << min(total, ans) << "\n";
-    /*ll n;
-    cin >> n;
-    ll a[n] = {0};
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-    ll b[n] = {0};
-    for (int i = 0; i < n; i++)
-    {
-        cin >> b[i];
-    }
-    ll count_a1 = 0;
-    ll count_a0 = 0;
-    ll count_b1 = 0;
-    ll count_b0 = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (a[i] == '1')
-        {
-            count_a1++;
-        }
-        if (a[i] == '0')
-        {
-            count_a0++;
-        }
-        if (b[i] == '1')
-        {
-            count_b1++;
-        }
-        if (b[i] == '0')
-        {
-            count_b1++;
-        }
-    }
-    if ((count_a1 == count_b1) && (count_b0 == count_a0))
-    {
-        if (a != b)
-        {
-            cout << "1" << endl;
-        }
-        else
-        {
-            cout << "0" << endl;
-        }
+        cout << "YES" << endl;
     }
     else
     {
-        cout << "2" << endl;
-    }*/
+        cout << "NO" << endl;
+    }
 }
 int main()
 {
@@ -333,9 +269,7 @@ int main()
     int t;
     cin >> t;
     while (t--)
-    {
         solve();
-    }
 
     return 0;
 }

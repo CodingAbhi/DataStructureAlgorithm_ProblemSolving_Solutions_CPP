@@ -251,91 +251,13 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    int n;
-    cin >> n;
-    vector<int> a(n), b(n);
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
-    for (int i = 0; i < n; i++)
-        cin >> b[i];
-
-    int ans = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (a[i] != b[i])
-            ans++;
-    }
-
-    sort(a.begin(), a.end());
-    sort(b.begin(), b.end());
-    int total = 1;
-    for (int i = 0; i < n; i++)
-    {
-        if (a[i] != b[i])
-            total++;
-    }
-    cout << min(total, ans) << "\n";
-    /*ll n;
-    cin >> n;
-    ll a[n] = {0};
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-    ll b[n] = {0};
-    for (int i = 0; i < n; i++)
-    {
-        cin >> b[i];
-    }
-    ll count_a1 = 0;
-    ll count_a0 = 0;
-    ll count_b1 = 0;
-    ll count_b0 = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (a[i] == '1')
-        {
-            count_a1++;
-        }
-        if (a[i] == '0')
-        {
-            count_a0++;
-        }
-        if (b[i] == '1')
-        {
-            count_b1++;
-        }
-        if (b[i] == '0')
-        {
-            count_b1++;
-        }
-    }
-    if ((count_a1 == count_b1) && (count_b0 == count_a0))
-    {
-        if (a != b)
-        {
-            cout << "1" << endl;
-        }
-        else
-        {
-            cout << "0" << endl;
-        }
-    }
-    else
-    {
-        cout << "2" << endl;
-    }*/
 }
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        solve();
-    }
+    // int t;cin >> t;while (t--)
+    solve();
 
     return 0;
 }
