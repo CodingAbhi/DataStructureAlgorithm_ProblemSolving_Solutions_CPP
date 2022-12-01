@@ -251,13 +251,26 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
+    vector<int> a = {1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000};
+    int n;
+    cin >> n;
+    for (int i = 9; i >= 0; i--)
+    {
+        if (a[i] <= n)
+        {
+            cout << n - a[i] << endl;
+            break;
+        }
+    }
 }
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    // int t;cin >> t;while (t--)
-    solve();
+    int t;
+    cin >> t;
+    while (t--)
+        solve();
 
     return 0;
 }
