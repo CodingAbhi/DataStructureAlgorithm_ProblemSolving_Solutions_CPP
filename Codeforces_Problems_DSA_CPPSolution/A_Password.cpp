@@ -250,21 +250,17 @@ ll CountDigitsofNumber(ll n)
 
 void solve()
 {
-    int n;
+    // SOLUTION STARTS
+    ll n;
     cin >> n;
-    int b = 0;
-    int pair = 0;
-    for (int b = 1; b <= n; b++)
+    int a[n] = {0};
+    for (int i = 0; i < n; i++)
     {
-        for (int a = 1; a <= b; a++)
-        {
-            if (((a * b) / gcd(a, b) * gcd(a, b)) <= 3)
-            {
-                pair++;
-            }
-        }
+        cin >> a[i];
     }
-    cout << pair << endl;
+    ll y = 10 - n;
+    ll x = (y * (y - 1)) / 2;
+    cout << x * 6 << endl;
 }
 int main()
 {
