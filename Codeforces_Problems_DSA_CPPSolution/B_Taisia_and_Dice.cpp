@@ -251,41 +251,20 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    sci(n);
-    vector<int> v(n);
-    for (int i = 0; i < n; i++)
+    ll n, s, r;
+    cin >> n >> s >> r;
+    ll a = s - r;
+    cout << a << " ";
+    for (int i = 2; i <= n; i++)
     {
-        cin >> v[i];
-    }
-    int min = INT_MAX;
-    for (int i = 0; i < n; i++)
-    {
-        if (v[i] < min)
+        while ((r - a) < (n - i))
         {
-            min = v[i];
+            a--;
         }
+        cout << a << " ";
+        r = r - a;
     }
-    int max = INT_MIN;
-    for (int i = 0; i < n; i++)
-    {
-        if (v[i] > max)
-        {
-            max = v[i];
-        }
-    }
-    ll a = max - min;
-    int count = 0;
-    for (int i = n - 1; i >= 0; i--)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            if ((abs(v[i] - v[j]) == a) && i != j)
-            {
-                count++;
-            }
-        }
-    }
-    cout << count << endl;
+    cout << endl;
 }
 int main()
 {

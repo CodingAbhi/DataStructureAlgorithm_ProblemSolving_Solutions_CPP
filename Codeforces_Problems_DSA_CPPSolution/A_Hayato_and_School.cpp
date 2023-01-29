@@ -249,43 +249,50 @@ ll CountDigitsofNumber(ll n)
 }
 
 void solve()
-{
+{ // 2 odd 1 even -> no
+    // 1 odd 2 even -> yes
+    // even+ odd -> odd
     // SOLUTION STARTS
     sci(n);
-    vector<int> v(n);
+    vector<int> v(n), odd, even;
     for (int i = 0; i < n; i++)
     {
         cin >> v[i];
+        (v[i] % 2 ? odd : even).push_back(i);
     }
-    int min = INT_MAX;
-    for (int i = 0; i < n; i++)
+    vector<int> temp;
+    for (int i = 0; i < 3 && i < odd.size(); i++)
     {
-        if (v[i] < min)
-        {
-            min = v[i];
-        }
+        temp.push_back(odd[i]);
     }
-    int max = INT_MIN;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < 3 && i < even.size(); i++)
     {
-        if (v[i] > max)
-        {
-            max = v[i];
-        }
+        temp.push_back(even[i]);
     }
-    ll a = max - min;
-    int count = 0;
-    for (int i = n - 1; i >= 0; i--)
+    int m = 0;
+    for (auto i : temp)
     {
-        for (int j = 0; j < n; j++)
+        for (int j : temp)
         {
-            if ((abs(v[i] - v[j]) == a) && i != j)
+            for (int k : temp)
             {
-                count++;
+                if ((i != j && j != k && k != i) && (v[i] + v[j] + v[k]) % 2)
+                {
+                    cout << "YES" << endl;
+                    cout << i + 1 << " " << j + 1 << " " << k + 1 << endl;
+                    return;
+                }
+                else
+                {
+                    m++;
+                }
             }
         }
     }
-    cout << count << endl;
+    if (m != 0)
+    {
+        cout << "NO" << endl;
+    }
 }
 int main()
 {
@@ -294,7 +301,9 @@ int main()
     int t;
     cin >> t;
     while (t--)
+    {
         solve();
+    }
 
     return 0;
 }
