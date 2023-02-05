@@ -251,22 +251,62 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    ll n, m, i, j;
-    cin >> n;
-    map<int, int> cnt;
-    for (int i = 0; i < n; i++)
+    sci(n);
+    int a[4] = {1, 2, -1, 2};
+    vector<int> v;
+    v.push_back(1);
+
+    int k = 0;
+    ll sum = 0;
+    sum = sum + v.back();
+
+    for (int k = 0; sum <= n; k++)
     {
-        cin >> m;
-        ++cnt[m];
+        if (k == 4)
+        {
+            k = 0;
+        }
+        // v[i] = v[i - 1] + a[k];
+        v.push_back(v.back() + a[k]);
+        sum = sum + v.back();
     }
-    if (cnt.size() == 1)
+    if (sum > n)
     {
-        cout << n * (n - 1) << endl;
+        sum -= n;
+        v[v.size() - 1] -= sum;
     }
-    else
+    dbgm(v);
+    ll alice = 0;
+    ll bob = 0;
+
+    for (int i = 0; i < v.size(); i += 2)
     {
-        cout << (ll)cnt.begin()->second * cnt.rbegin()->second * 2 << endl;
+        alice += v[i];
     }
+    for (int i = 1; i < v.size(); i += 2)
+    {
+        bob += v[i];
+    }
+    cout << alice << " " << bob << endl;
+
+    cout << endl;
+}
+void anothersolve()
+{
+    sci(n);
+    vector<int> v;
+    int sum = 0;
+    v.push_back(1);
+    while (sum <= n)
+    {
+        v.push_back(v.back() + 1);
+        sum += v.back();
+    }
+    for (auto x : v)
+    {
+        cout << x << " ";
+    }
+    cout << endl;
 }
 int main()
 {
@@ -275,7 +315,7 @@ int main()
     int t;
     cin >> t;
     while (t--)
-        solve();
+        anothersolve();
 
     return 0;
 }

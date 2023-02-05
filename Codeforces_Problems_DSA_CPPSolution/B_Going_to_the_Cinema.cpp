@@ -251,22 +251,22 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    ll n, m, i, j;
-    cin >> n;
-    map<int, int> cnt;
+    sci(n);
+    vector<int> v(n);
     for (int i = 0; i < n; i++)
     {
-        cin >> m;
-        ++cnt[m];
+        cin >> v[i];
     }
-    if (cnt.size() == 1)
+    sort(v.begin(), v.end());
+    int c = (v[0] != 0 ? 2 : 1);
+    for (int i = 0; i < n - 1; i++)
     {
-        cout << n * (n - 1) << endl;
+        if ((v[i] <= i) && (v[i + 1] >= i + 2))
+        {
+            c++;
+        }
     }
-    else
-    {
-        cout << (ll)cnt.begin()->second * cnt.rbegin()->second * 2 << endl;
-    }
+    cout << c << endl;
 }
 int main()
 {

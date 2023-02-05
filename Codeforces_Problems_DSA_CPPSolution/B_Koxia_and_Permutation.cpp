@@ -251,23 +251,36 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    ll n, m, i, j;
-    cin >> n;
-    map<int, int> cnt;
-    for (int i = 0; i < n; i++)
+    scii(n, k);
+    vector<int> v(n);
+    if (k == 1)
     {
-        cin >> m;
-        ++cnt[m];
-    }
-    if (cnt.size() == 1)
-    {
-        cout << n * (n - 1) << endl;
+        for (int i = 0; i < n; i++)
+        {
+            v[i] = i + 1;
+        }
     }
     else
     {
-        cout << (ll)cnt.begin()->second * cnt.rbegin()->second * 2 << endl;
+        ll j = 1;
+
+        for (int i = 0; i < n; i = i + 2, j++)
+        {
+            v[i] = n - j + 1;
+        }
+        ll m = 1;
+        for (int i = 1; i < n; i = i + 2, m++)
+        {
+            v[i] = m;
+        }
     }
+    for (auto x : v)
+    {
+        cout << x << " ";
+    }
+    cout << endl;
 }
+
 int main()
 {
     ios::sync_with_stdio(false);
