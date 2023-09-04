@@ -368,72 +368,14 @@ void another_solve()
 }
 void solvee()
 {
-    sci(n);
-    if (n == 0)
-        cout << "0 0" << endl;
-    n--;
-    ll a = 1, b = 0;
-    int count = 2;
-    ll alice = 0, bob = 1;
-    /*
-    A B B A A B B A A*/
-    while (n > 0 && n - count >= 0)
-    {
-        if (bob)
-        {
-            b += count;
-            n -= count;
-            count++;
-            if (n > 0 && n - count >= 0)
-            {
-                b += count;
-                n -= count;
-                count++;
-            }
-            else
-            {
-                break;
-                bob = bob ^ 0 ^ 1;
-                alice = alice ^ 0 ^ 1;
-            }
-        }
-        else
-        {
-            a += count;
-            n -= count;
-            count++;
-            if (n > 0 && n - count >= 0)
-            {
-                a += count;
-                n -= count;
-                count++;
-            }
-            else
-            {
-                break;
-                bob = bob ^ 0 ^ 1;
-                alice = alice ^ 0 ^ 1;
-            }
-        }
-    }
-    if (n > 0)
-    {
-        if (bob)
-            b += n;
-        else
-            a += n;
-    }
-    cout << a << " " << b;
-    cout << endl;
 }
+
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int t;
-    cin >> t;
-    while (t--)
-        solvee();
+
+    solve();
 
     return 0;
 }

@@ -251,180 +251,50 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    sci(n);
-    int a[4] = {1, 2, -1, 2};
-    vector<int> v;
-    v.push_back(1);
-
-    int k = 0;
-    ll sum = 0;
-    sum = sum + v.back();
-
-    for (int k = 0; sum <= n; k++)
+    string s;
+    cin >> s;
+    int upd = 0;
+    if (s.size() == 1)
     {
-        if (k == 4)
+        if (s[0] == '_')
         {
-            k = 0;
+            upd = 2;
         }
-        if (v.back() + a[k] > n)
+        else
         {
-            v.push_back(n);
-            break;
+            upd = 1;
         }
-        v.push_back(v.back() + a[k]);
-        sum = sum + v.back();
-        n = n - (v.back() + a[k]);
     }
-    for (int i = 0; i < v.size(); i++)
-    {
-        cout << v[i] << " ";
-    }
-    /*if (sum > n)
-    {
-        sum -= n;
-        v[v.size() - 1] -= sum;
-    }
-    dbgm(v);
-    ll alice = 0;
-    ll bob = 0;
 
-    for (int i = 0; i < v.size(); i += 2)
+    for (int i = 0; i < s.size() - 1; i++)
     {
-        alice += v[i];
-    }
-    for (int i = 1; i < v.size(); i += 2)
-    {
-        bob += v[i];
-    }
-    cout << alice << " " << bob << endl;*/
-
-    cout << endl;
-}
-void another_solve()
-{
-    sci(n);
-    ll alice = 0;
-    ll bob = 1;
-    ll a = 1;
-    ll b = 0;
-
-    int i = 2;
-
-    while (n > 0 && n >= i)
-    {
-        if (bob)
+        if ((s[i] == '^' && s[i + 1] == '^') || ((s[i] == '^' && s[i + 1] == '_') && s[i + 2] == '^'))
         {
-            b = b + i;
-
-            n = n - i;
-            i++;
-            if (n > 0 && n >= i)
+            if ((s[i] == '^' && s[i + 1] == '_') && s[i + 2] == '^')
             {
-                b += i;
-                n = n - i;
-                i++;
+                i = i + 3;
+                continue;
             }
-            else
+            else if ((s[i] == '^' && s[i + 1] == '_') || (s[i] == '_' && s[i + 1] == '_'))
             {
-                break;
-                bob = 1 - bob;
-                alice = 1 - alice;
+                // if ((s[i] == '_' && s[i + 1] == '_'))
+                // {
+                //     upd = upd + 2;
+                //     i = i + 2;
+                // }
+                // else
+                {
+                    upd++;
+                }
             }
         }
         else
         {
-            a = a + i;
 
-            n = n - i;
-            i++;
-            if (n > 0 && n >= i)
-            {
-                a += i;
-                n = n - i;
-                i++;
-            }
-            else
-            {
-                break;
-                bob = 1 - bob;
-                alice = 1 - alice;
-            }
+            upd++;
         }
     }
-    if (n > 0)
-    {
-        if (bob)
-        {
-            bob += n;
-        }
-        else
-        {
-            alice += n;
-        }
-    }
-
-    cout << a << " " << b;
-    cout << endl;
-}
-void solvee()
-{
-    sci(n);
-    if (n == 0)
-        cout << "0 0" << endl;
-    n--;
-    ll a = 1, b = 0;
-    int count = 2;
-    ll alice = 0, bob = 1;
-    /*
-    A B B A A B B A A*/
-    while (n > 0 && n - count >= 0)
-    {
-        if (bob)
-        {
-            b += count;
-            n -= count;
-            count++;
-            if (n > 0 && n - count >= 0)
-            {
-                b += count;
-                n -= count;
-                count++;
-            }
-            else
-            {
-                break;
-                bob = bob ^ 0 ^ 1;
-                alice = alice ^ 0 ^ 1;
-            }
-        }
-        else
-        {
-            a += count;
-            n -= count;
-            count++;
-            if (n > 0 && n - count >= 0)
-            {
-                a += count;
-                n -= count;
-                count++;
-            }
-            else
-            {
-                break;
-                bob = bob ^ 0 ^ 1;
-                alice = alice ^ 0 ^ 1;
-            }
-        }
-    }
-    if (n > 0)
-    {
-        if (bob)
-            b += n;
-        else
-            a += n;
-    }
-    cout << a << " " << b;
-    cout << endl;
+    cout << upd << endl;
 }
 int main()
 {
@@ -433,7 +303,7 @@ int main()
     int t;
     cin >> t;
     while (t--)
-        solvee();
+        solve();
 
     return 0;
 }

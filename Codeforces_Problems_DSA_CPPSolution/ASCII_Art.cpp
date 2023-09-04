@@ -251,180 +251,6 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    sci(n);
-    int a[4] = {1, 2, -1, 2};
-    vector<int> v;
-    v.push_back(1);
-
-    int k = 0;
-    ll sum = 0;
-    sum = sum + v.back();
-
-    for (int k = 0; sum <= n; k++)
-    {
-        if (k == 4)
-        {
-            k = 0;
-        }
-        if (v.back() + a[k] > n)
-        {
-            v.push_back(n);
-            break;
-        }
-        v.push_back(v.back() + a[k]);
-        sum = sum + v.back();
-        n = n - (v.back() + a[k]);
-    }
-    for (int i = 0; i < v.size(); i++)
-    {
-        cout << v[i] << " ";
-    }
-    /*if (sum > n)
-    {
-        sum -= n;
-        v[v.size() - 1] -= sum;
-    }
-    dbgm(v);
-    ll alice = 0;
-    ll bob = 0;
-
-    for (int i = 0; i < v.size(); i += 2)
-    {
-        alice += v[i];
-    }
-    for (int i = 1; i < v.size(); i += 2)
-    {
-        bob += v[i];
-    }
-    cout << alice << " " << bob << endl;*/
-
-    cout << endl;
-}
-void another_solve()
-{
-    sci(n);
-    ll alice = 0;
-    ll bob = 1;
-    ll a = 1;
-    ll b = 0;
-
-    int i = 2;
-
-    while (n > 0 && n >= i)
-    {
-        if (bob)
-        {
-            b = b + i;
-
-            n = n - i;
-            i++;
-            if (n > 0 && n >= i)
-            {
-                b += i;
-                n = n - i;
-                i++;
-            }
-            else
-            {
-                break;
-                bob = 1 - bob;
-                alice = 1 - alice;
-            }
-        }
-        else
-        {
-            a = a + i;
-
-            n = n - i;
-            i++;
-            if (n > 0 && n >= i)
-            {
-                a += i;
-                n = n - i;
-                i++;
-            }
-            else
-            {
-                break;
-                bob = 1 - bob;
-                alice = 1 - alice;
-            }
-        }
-    }
-    if (n > 0)
-    {
-        if (bob)
-        {
-            bob += n;
-        }
-        else
-        {
-            alice += n;
-        }
-    }
-
-    cout << a << " " << b;
-    cout << endl;
-}
-void solvee()
-{
-    sci(n);
-    if (n == 0)
-        cout << "0 0" << endl;
-    n--;
-    ll a = 1, b = 0;
-    int count = 2;
-    ll alice = 0, bob = 1;
-    /*
-    A B B A A B B A A*/
-    while (n > 0 && n - count >= 0)
-    {
-        if (bob)
-        {
-            b += count;
-            n -= count;
-            count++;
-            if (n > 0 && n - count >= 0)
-            {
-                b += count;
-                n -= count;
-                count++;
-            }
-            else
-            {
-                break;
-                bob = bob ^ 0 ^ 1;
-                alice = alice ^ 0 ^ 1;
-            }
-        }
-        else
-        {
-            a += count;
-            n -= count;
-            count++;
-            if (n > 0 && n - count >= 0)
-            {
-                a += count;
-                n -= count;
-                count++;
-            }
-            else
-            {
-                break;
-                bob = bob ^ 0 ^ 1;
-                alice = alice ^ 0 ^ 1;
-            }
-        }
-    }
-    if (n > 0)
-    {
-        if (bob)
-            b += n;
-        else
-            a += n;
-    }
-    cout << a << " " << b;
-    cout << endl;
 }
 int main()
 {
@@ -433,7 +259,68 @@ int main()
     int t;
     cin >> t;
     while (t--)
-        solvee();
+// solve();
+#include <iostream>
+#include <unordered_map>
+#include <cmath>
+using namespace std;
+
+    // Function to calculate the number of times a letter is printed up to iteration i
+    unordered_map<char, int> count_letters(int i)
+    {
+        int s = i * (i + 1) / 2; // sum of numbers from 1 to i
+        unordered_map<char, int> count;
+        for (int j = 0; j < 26; j++)
+        {
+            count['A' + j] = s;
+            s -= i; // decrement sum by i for next letter
+        }
+        return count;
+    }
+
+    // Main function to solve the problem
+    void solve()
+    {
+        int T;
+        cin >> T;
+        for (int t = 1; t <= T; t++)
+        {
+            long long N;
+            cin >> N;
+            int i = 1;
+            while (true)
+            {
+                auto counts = count_letters(i);
+                int total_chars = 0;
+                for (auto it = counts.begin(); it != counts.end(); it++)
+                {
+                    total_chars += it->second;
+                }
+                if (total_chars >= N)
+                {
+                    char ans;
+                    for (char letter = 'A'; letter <= 'Z'; letter++)
+                    {
+                        N -= counts[letter];
+                        if (N <= 0)
+                        {
+                            ans = letter;
+                            break;
+                        }
+                    }
+                    cout << "Case #" << t << ": " << ans << endl;
+                    break;
+                }
+                i++;
+            }
+        }
+    }
+
+    int main()
+    {
+        solve();
+        return 0;
+    }
 
     return 0;
 }

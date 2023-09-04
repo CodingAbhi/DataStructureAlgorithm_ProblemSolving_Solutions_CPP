@@ -251,180 +251,164 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    sci(n);
-    int a[4] = {1, 2, -1, 2};
-    vector<int> v;
-    v.push_back(1);
+    int n;
+    cin >> n;
+    int a[n] = {0};
+    map<int, int> m;
+    map<int, int>::iterator it;
 
-    int k = 0;
-    ll sum = 0;
-    sum = sum + v.back();
-
-    for (int k = 0; sum <= n; k++)
+    for (int i = 0; i < n; i++)
     {
-        if (k == 4)
+        cin >> a[i];
+        m[a[i]]++;
+    }
+    if ((n == 1))
+    {
+        if (a[0] == 0)
         {
-            k = 0;
+            cout << "YES" << endl;
         }
-        if (v.back() + a[k] > n)
+        else
         {
-            v.push_back(n);
+            cout << "NO" << endl;
+        }
+        return;
+    }
+    sort(a, a + n);
+    // for (it = m.begin(); it != m.end(); it++)
+    // {
+    //     cout << it->first << " " << it->second << endl;
+    // }
+    int ans[a[n - 1]];
+    for (int i = 0; i <= a[n - 1];)
+    {
+        for (it = m.begin(); it != m.end();)
+        {
+            ans[i] = it->first;
+            it++;
+            i++;
+        }
+    }
+    // for (int i = 0; i <= a[n - 1]; i++)
+    // {
+    //     cout << ans[i] << endl;
+    // }
+    bool H = true;
+    for (int i = 0; i < a[n - 1]; i++)
+    {
+        if (ans[i] + 1 == ans[i + 1])
+        {
+            // cout << "YES" << endl;
+            H = true;
+        }
+        else
+        {
+            // cout << "NO" << endl;
+            H = false;
+        }
+    }
+    if (H)
+    {
+        cout << "YES" << endl;
+    }
+    else
+    {
+        cout << "NO" << endl;
+    }
+}
+void anothersolve()
+{
+    int n;
+    cin >> n;
+    int a[n] = {0};
+    map<int, int> m;
+    map<int, int>::iterator it;
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+        m[a[i]]++;
+    }
+
+    if (n == 1)
+    {
+        if (a[0] == 0)
+        {
+            cout << "YES" << endl;
+        }
+        else
+        {
+            cout << "NO" << endl;
+        }
+        return;
+    }
+
+    sort(a, a + n);
+    if (a[0] != 0)
+    {
+        cout << "NO" << endl;
+        return;
+    }
+    bool ans = false;
+    for (int i = 0; i < n - 1; i++)
+    {
+        if ((a[i + 1] - a[i] == 1) || (a[i + 1] - a[i] == 0))
+        {
+            ans = true;
+        }
+        else
+        {
+            ans = false;
             break;
         }
-        v.push_back(v.back() + a[k]);
-        sum = sum + v.back();
-        n = n - (v.back() + a[k]);
     }
-    for (int i = 0; i < v.size(); i++)
+    // if (ans)
+    // {
+    //     cout << "YES" << endl;
+    // }
+    // else
+    // {
+    //     cout << "NO" << endl;
+    // }
+    for (it = m.begin(); it != m.end(); it++)
     {
-        cout << v[i] << " ";
+        cout << it->first << " " << it->second << endl;
     }
-    /*if (sum > n)
-    {
-        sum -= n;
-        v[v.size() - 1] -= sum;
-    }
-    dbgm(v);
-    ll alice = 0;
-    ll bob = 0;
-
-    for (int i = 0; i < v.size(); i += 2)
-    {
-        alice += v[i];
-    }
-    for (int i = 1; i < v.size(); i += 2)
-    {
-        bob += v[i];
-    }
-    cout << alice << " " << bob << endl;*/
-
-    cout << endl;
 }
-void another_solve()
+
+void onemoresolve()
 {
-    sci(n);
-    ll alice = 0;
-    ll bob = 1;
-    ll a = 1;
-    ll b = 0;
-
-    int i = 2;
-
-    while (n > 0 && n >= i)
+    int n;
+    cin >> n;
+    vector<int> v;
+    map<int, int> m;
+    for (int i = 0; i < n; i++)
     {
-        if (bob)
-        {
-            b = b + i;
-
-            n = n - i;
-            i++;
-            if (n > 0 && n >= i)
-            {
-                b += i;
-                n = n - i;
-                i++;
-            }
-            else
-            {
-                break;
-                bob = 1 - bob;
-                alice = 1 - alice;
-            }
-        }
-        else
-        {
-            a = a + i;
-
-            n = n - i;
-            i++;
-            if (n > 0 && n >= i)
-            {
-                a += i;
-                n = n - i;
-                i++;
-            }
-            else
-            {
-                break;
-                bob = 1 - bob;
-                alice = 1 - alice;
-            }
-        }
+        cin >> v[i];
+        m[v[i]]++;
     }
-    if (n > 0)
+    int f = 1;
+    if (*max_element(v.begin(), v.end()) > n)
     {
-        if (bob)
-        {
-            bob += n;
-        }
-        else
-        {
-            alice += n;
-        }
+        f = 0;
     }
 
-    cout << a << " " << b;
-    cout << endl;
-}
-void solvee()
-{
-    sci(n);
-    if (n == 0)
-        cout << "0 0" << endl;
-    n--;
-    ll a = 1, b = 0;
-    int count = 2;
-    ll alice = 0, bob = 1;
-    /*
-    A B B A A B B A A*/
-    while (n > 0 && n - count >= 0)
+    for (int i = 1; i <= n; i++)
     {
-        if (bob)
+        if (m[v[i]] > m[v[i - 1]])
         {
-            b += count;
-            n -= count;
-            count++;
-            if (n > 0 && n - count >= 0)
-            {
-                b += count;
-                n -= count;
-                count++;
-            }
-            else
-            {
-                break;
-                bob = bob ^ 0 ^ 1;
-                alice = alice ^ 0 ^ 1;
-            }
-        }
-        else
-        {
-            a += count;
-            n -= count;
-            count++;
-            if (n > 0 && n - count >= 0)
-            {
-                a += count;
-                n -= count;
-                count++;
-            }
-            else
-            {
-                break;
-                bob = bob ^ 0 ^ 1;
-                alice = alice ^ 0 ^ 1;
-            }
+
+            f = 0;
         }
     }
-    if (n > 0)
+    if (f)
     {
-        if (bob)
-            b += n;
-        else
-            a += n;
+        cout << "YES" << endl;
     }
-    cout << a << " " << b;
-    cout << endl;
+    else
+    {
+        cout << "NO" << endl;
+    }
 }
 int main()
 {
@@ -433,7 +417,7 @@ int main()
     int t;
     cin >> t;
     while (t--)
-        solvee();
+        onemoresolve();
 
     return 0;
 }

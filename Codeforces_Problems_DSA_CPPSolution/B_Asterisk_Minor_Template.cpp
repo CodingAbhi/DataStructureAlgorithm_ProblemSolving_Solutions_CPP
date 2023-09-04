@@ -251,180 +251,52 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    sci(n);
-    int a[4] = {1, 2, -1, 2};
-    vector<int> v;
-    v.push_back(1);
-
-    int k = 0;
-    ll sum = 0;
-    sum = sum + v.back();
-
-    for (int k = 0; sum <= n; k++)
+    string s;
+    string t;
+    cin >> s >> t;
+    ll a = s.size();
+    ll b = t.size();
+    if (s[0] == t[0])
     {
-        if (k == 4)
+        cout << "YES" << endl;
+        cout << s[0] << "*" << endl;
+    }
+    else if (s.back() == t.back())
+    {
+        cout << "YES" << endl;
+        cout << "*" << s.back() << endl;
+    }
+    else if (s[a - 1] == t[b - 1])
+    {
+        cout << "YES" << endl;
+        cout << "*" << s[a - 1] << endl;
+    }
+    else
+    {
+        string ans = "";
+        for (int i = 0; i < a - 1; i++)
         {
-            k = 0;
-        }
-        if (v.back() + a[k] > n)
-        {
-            v.push_back(n);
-            break;
-        }
-        v.push_back(v.back() + a[k]);
-        sum = sum + v.back();
-        n = n - (v.back() + a[k]);
-    }
-    for (int i = 0; i < v.size(); i++)
-    {
-        cout << v[i] << " ";
-    }
-    /*if (sum > n)
-    {
-        sum -= n;
-        v[v.size() - 1] -= sum;
-    }
-    dbgm(v);
-    ll alice = 0;
-    ll bob = 0;
-
-    for (int i = 0; i < v.size(); i += 2)
-    {
-        alice += v[i];
-    }
-    for (int i = 1; i < v.size(); i += 2)
-    {
-        bob += v[i];
-    }
-    cout << alice << " " << bob << endl;*/
-
-    cout << endl;
-}
-void another_solve()
-{
-    sci(n);
-    ll alice = 0;
-    ll bob = 1;
-    ll a = 1;
-    ll b = 0;
-
-    int i = 2;
-
-    while (n > 0 && n >= i)
-    {
-        if (bob)
-        {
-            b = b + i;
-
-            n = n - i;
-            i++;
-            if (n > 0 && n >= i)
+            for (int j = 0; j < b - 1; j++)
             {
-                b += i;
-                n = n - i;
-                i++;
+                if ((s[i] == t[j]) && s[i + 1] == t[j + 1])
+                {
+                    ans = "";
+                    ans.push_back(s[i]);
+                    ans.push_back(s[i + 1]);
+                    break;
+                }
             }
-            else
-            {
-                break;
-                bob = 1 - bob;
-                alice = 1 - alice;
-            }
+        }
+        if (ans.length())
+        {
+            cout << "YES" << endl;
+            cout << "*" << ans << "*" << endl;
         }
         else
         {
-            a = a + i;
-
-            n = n - i;
-            i++;
-            if (n > 0 && n >= i)
-            {
-                a += i;
-                n = n - i;
-                i++;
-            }
-            else
-            {
-                break;
-                bob = 1 - bob;
-                alice = 1 - alice;
-            }
+            cout << "NO" << endl;
         }
     }
-    if (n > 0)
-    {
-        if (bob)
-        {
-            bob += n;
-        }
-        else
-        {
-            alice += n;
-        }
-    }
-
-    cout << a << " " << b;
-    cout << endl;
-}
-void solvee()
-{
-    sci(n);
-    if (n == 0)
-        cout << "0 0" << endl;
-    n--;
-    ll a = 1, b = 0;
-    int count = 2;
-    ll alice = 0, bob = 1;
-    /*
-    A B B A A B B A A*/
-    while (n > 0 && n - count >= 0)
-    {
-        if (bob)
-        {
-            b += count;
-            n -= count;
-            count++;
-            if (n > 0 && n - count >= 0)
-            {
-                b += count;
-                n -= count;
-                count++;
-            }
-            else
-            {
-                break;
-                bob = bob ^ 0 ^ 1;
-                alice = alice ^ 0 ^ 1;
-            }
-        }
-        else
-        {
-            a += count;
-            n -= count;
-            count++;
-            if (n > 0 && n - count >= 0)
-            {
-                a += count;
-                n -= count;
-                count++;
-            }
-            else
-            {
-                break;
-                bob = bob ^ 0 ^ 1;
-                alice = alice ^ 0 ^ 1;
-            }
-        }
-    }
-    if (n > 0)
-    {
-        if (bob)
-            b += n;
-        else
-            a += n;
-    }
-    cout << a << " " << b;
-    cout << endl;
 }
 int main()
 {
@@ -433,7 +305,7 @@ int main()
     int t;
     cin >> t;
     while (t--)
-        solvee();
+        solve();
 
     return 0;
 }
