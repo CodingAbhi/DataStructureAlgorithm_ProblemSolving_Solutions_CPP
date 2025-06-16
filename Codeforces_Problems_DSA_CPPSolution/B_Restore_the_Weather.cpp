@@ -251,24 +251,30 @@ ll CountDigitsofNumber(ll n)
 void solve()
 {
     // SOLUTION STARTS
-    int n, k;
+    ll n, k, x;
     cin >> n >> k;
-    int a[n];
-    int b[n];
-    vector<pair<int, int>> fir;
-    vector<ll> sec;
+    vector<pair<ll, ll>> a;
+    vector<ll> b, r;
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
-        fir.push_back(make_pair(a[i], i));
+        cin >> x;
+        a.push_back(make_pair(x, i));
     }
     for (int i = 0; i < n; i++)
     {
-        cin >> b[i];
+        cin >> x;
+        b.push_back(x);
     }
-    sort(a, a + n);
-    sort(b, b + n);
-
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
+    for (int i = 0; i < n; i++)
+    {
+        r[a[i].second] = b[i];
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cout << r[i];
+    }
     cout << endl;
 }
 int main()
