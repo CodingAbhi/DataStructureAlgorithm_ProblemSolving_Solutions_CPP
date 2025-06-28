@@ -1,0 +1,1 @@
+{"name":"Local: Race","url":"c:\\Users\\asus\\Desktop\\code\\Codeforces_Problems_DSA_CPPSolution\\Race.cpp","tests":[{"id":1750689788274,"input":"3\n1 3 4\n5 3 1\n3 1 5\n","output":"YES\nYES\nNO\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\asus\\Desktop\\code\\Codeforces_Problems_DSA_CPPSolution\\Race.cpp","group":"local","local":true}
